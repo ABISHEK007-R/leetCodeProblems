@@ -5,7 +5,7 @@ class Solution {
             if (t % mid == 0)
                 k += (t / mid);
             else
-                k += (t / mid) + 1;
+                k += (t/mid) + 1;
         }
         return k <= h ? true : false;
     }
