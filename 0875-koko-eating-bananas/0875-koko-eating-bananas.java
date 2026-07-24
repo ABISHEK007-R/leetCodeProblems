@@ -1,33 +1,33 @@
 class Solution {
-    boolean check(int h, int[] p, int mid) {
-        long k = 0;
-        for (int t : p) {
-            if (t % mid == 0)
-                k += (t / mid);
-            else
-                k += (t/mid) + 1;
+    public boolean check(int mid,int h,int[] p){
+        int count=0;
+        for(int i=0;i<p.length;i++){
+            if(p[i]%mid==0) count+=p[i]/mid;
+            else count+=p[i]/mid+1;
         }
-        return k <= h ? true : false;
+        return count<=h;
     }
-
     public int minEatingSpeed(int[] piles, int h) {
-        int high = piles[0];
-        int ans = 0;
-        for (int i = 0; i < piles.length; i++) {
-            if (high < piles[i]) {
-                high = piles[i];
-            }
+    int low=1;
+    int ans=0;
+    int high=piles[0];
+    for(int i=0;i<piles.length;i++){
+    if(high<piles[i]){
+      high=piles[i];
+    }
+    }
+    high=Integer.MAX_VALUE;
+    System.out.println(high);
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        if(check(mid,h,piles)){
+            high=mid-1;
+            ans=mid;
         }
-        int low = 1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (check(h, piles, mid)) {
-                ans = mid;
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
+        else{
+            low=mid+1;
         }
-        return ans;
+    } 
+    return ans;   
     }
 }
