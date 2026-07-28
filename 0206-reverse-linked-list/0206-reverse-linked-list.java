@@ -20,8 +20,7 @@ class Solution {
     }
     public ListNode reverseList(ListNode head) {
     if(head==null||head.next==null) return head;
-    ListNode temp=head;
-    reverse(temp,head);
+    reverse(head,head);
     return redirect;    
     }
 }
