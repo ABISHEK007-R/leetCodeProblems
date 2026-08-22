@@ -7,7 +7,6 @@ class Solution {
         int rem=temp%10;
         sum+=rem;
         pro*=rem;
-        System.out.println(sum+" "+pro);
         temp/=10;
     }    
     return n%(sum+pro)==0;
